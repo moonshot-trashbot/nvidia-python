@@ -1,9 +1,11 @@
 import json
 
-def modify(x):
+def modify(y):
+    x = {};
+    x.__dict__ = y.__dict__.copy()
     if(hasattr(x, "TrackId") == False): x["TrackId"] = -1;
     return {
-        "id": x["TrackID"],
+        "id": x["TrackId"],
         "left": x["Left"],
         "right": x["Right"],
         "top": x["Top"],
