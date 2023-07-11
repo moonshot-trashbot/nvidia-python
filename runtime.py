@@ -1,9 +1,10 @@
 import json
 
 def modify(x):
-    if(hasattr(x, "TrackId") == False): return {"fake": True};
+    if(hasattr(x, "TrackID") == False): return {"fake": True};
     return {
-        "id": x["TrackId"],
+        "id": x["TrackID"],
+        "class": x["ClassID"],
         "left": x["Left"],
         "right": x["Right"],
         "top": x["Top"],
