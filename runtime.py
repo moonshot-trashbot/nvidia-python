@@ -1,15 +1,15 @@
 import json
 
 def modify(x):
-    if(hasattr(x, "TrackID") == False): return {"fake": True};
+    if(x.TrackId is None): return {"fake": True};
     return {
-        "id": x["TrackID"],
-        "class": x["ClassID"],
-        "left": x["Left"],
-        "right": x["Right"],
-        "top": x["Top"],
-        "bottom": x["Bottom"],
-        "center": [x["Center"][0], x["Center"][1]]
+        "id": x.TrackID,
+        "class": x.ClassID,
+        "left": x.Left,
+        "right": x.Right,
+        "top": x.Top,
+        "bottom": x.Bottom,
+        "center": x.Center
     }
 
 def go(detections):
