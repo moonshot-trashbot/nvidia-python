@@ -2,7 +2,7 @@ import json
 
 def modify(x):
     return {
-        "id": x.TrackID | -1,
+        "id": x.TrackID,
         "class": x.ClassID,
         "left": x.Left,
         "right": x.Right,

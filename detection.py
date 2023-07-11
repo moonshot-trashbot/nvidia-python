@@ -14,4 +14,4 @@ while True:
     if img is None: continue
     detections = net.Detect(img)
     runtime.go(detections)
-    time.sleep(3)
+    time.sleep(1)
