@@ -1,2 +1,4 @@
+import json
+
 def go(detections):
-    print(detections)
+    print(json.dumps(detections))
