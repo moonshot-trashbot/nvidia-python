@@ -1,9 +1,8 @@
 import json
 
 def modify(x):
-    if(x.TrackId is None): return {"fake": True};
     return {
-        "id": x.TrackID,
+        "id": x.TrackID | -1,
         "class": x.ClassID,
         "left": x.Left,
         "right": x.Right,
