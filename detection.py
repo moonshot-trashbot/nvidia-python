@@ -3,9 +3,8 @@ from jetson_utils import videoSource, videoOutput
 
 net = detectNet("ssd-mobilenet-v2", threshold=0.5)
 camera = videoSource("/dev/video0")
-display = videoOutput("display://0")
 
-while display.IsStreaming():
+while True:
     img = camera.Capture()
 
     if img is None:
