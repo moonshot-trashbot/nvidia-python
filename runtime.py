@@ -1,4 +1,17 @@
 import json
+import base64
+import socket
+
+class Fake:
+    def __init__(self, data):
+        self.TrackID = data["TrackID"]
+        self.Confidence = data["Confidence"]
+        self.ClassID = data["ClassID"]
+        self.Left = data["Left"]
+        self.Right = data["Right"]
+        self.Top = data["Top"]
+        self.Bottom = data["Bottom"]
+        self.Center = data["Center"]
 
 def modify(x):
     return {
@@ -11,6 +24,17 @@ def modify(x):
         "center": x.Center
     }
 
+ss = socket.socket()
+ss.connect(("127.0.0.1", 420))
+
 def go(detections):
     for x in detections:
-        print(modify(x))
+        mod = modify(x)
+        js = json.dumps(mod) + "\n"
+        print(js)
+        print(">>> Sending", js)
+        js = js.encode('utf-8')
+        ss.sendall(js)
+
+def complete():
+    ss.close()
