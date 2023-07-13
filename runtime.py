@@ -13,8 +13,18 @@ class Fake:
         self.Bottom = data["Bottom"]
         self.Center = data["Center"]
 
+class DetectorObject:
+    def __init__(self, data):
+        self.id = data["track"]
+        self.type = data["type"]
+        self.left = data["left"]
+        self.right = data["right"]
+        self.top = data["top"]
+        self.bottom = data["bottom"]
+        self.center = data["center"]
+
 def modify(x):
-    return {
+    return DetectorObject({
         "id": x.TrackID,
         "type": x.ClassID,
         "left": x.Left,
@@ -22,7 +32,7 @@ def modify(x):
         "top": x.Top,
         "bottom": x.Bottom,
         "center": x.Center
-    }
+    })
 
 ss = socket.socket()
 ss.connect(("192.168.12.238", 420))
