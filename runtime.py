@@ -16,7 +16,7 @@ class Fake:
 def modify(x):
     return {
         "id": x.TrackID,
-        "class": x.ClassID,
+        "type": x.ClassID,
         "left": x.Left,
         "right": x.Right,
         "top": x.Top,
