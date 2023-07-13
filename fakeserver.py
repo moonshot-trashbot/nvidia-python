@@ -1,10 +1,10 @@
 import time
 import runtime
-from runtime import Fake
+import modeling
         
 fakelog = [
     [
-        Fake({
+        modeling.CustomizedTestingInput({
             "TrackID": 1,
             "Confidence": 0.75,
             "ClassID": 1,
@@ -16,7 +16,7 @@ fakelog = [
         })
     ],
     [
-        Fake({
+        modeling.CustomizedTestingInput({
             "TrackID": 1,
             "Confidence": 0.75,
             "ClassID": 1,
@@ -26,7 +26,7 @@ fakelog = [
             "Bottom": 200,
             "Center": [0, 0]
         }),
-        Fake({
+        modeling.CustomizedTestingInput({
             "TrackID": 2,
             "Confidence": 0.65,
             "ClassID": 1,
