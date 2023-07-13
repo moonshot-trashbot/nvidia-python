@@ -1,5 +1,7 @@
 import socket
 
+thevar = True
+
 with socket.socket() as s:
     host = "0.0.0.0"
     port = 420
@@ -7,7 +9,7 @@ with socket.socket() as s:
     s.bind((host, port))
     s.listen()
 
-    while True:
+    while thevar:
         con, addr = s.accept()
         while con:
             data = con.recv(1024)
@@ -15,3 +17,6 @@ with socket.socket() as s:
             print("Found", str(data.decode('utf-8')))
 
     s.close()
+
+def stopper():
+    thevar = False
