@@ -25,7 +25,7 @@ def modify(x):
     }
 
 ss = socket.socket()
-ss.connect(("127.0.0.1", 420))
+ss.connect(("192.168.12.238", 420))
 
 def go(detections):
     for x in detections:
