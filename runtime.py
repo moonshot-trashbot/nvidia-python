@@ -15,7 +15,7 @@ class Fake:
 
 class DetectorObject:
     def __init__(self, data):
-        self.id = data["track"]
+        self.id = data["id"]
         self.type = data["type"]
         self.left = data["left"]
         self.right = data["right"]
