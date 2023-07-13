@@ -22,6 +22,9 @@ class DetectorObject:
         self.top = data["top"]
         self.bottom = data["bottom"]
         self.center = data["center"]
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
 
 def modify(x):
     return DetectorObject({
@@ -40,7 +43,7 @@ ss.connect(("192.168.12.238", 420))
 def go(detections):
     for x in detections:
         mod = modify(x)
-        js = json.dumps(mod) + "\n"
+        js = mod.toJSON() + "\n"
         print(js)
         print(">>> Sending", js)
         js = js.encode('utf-8')
