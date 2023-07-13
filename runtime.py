@@ -30,10 +30,10 @@ ss.connect(("192.168.12.238", 420))
 def go(detections):
     for x in detections:
         mod = modify(x)
-        js = json.dumps(mod)
+        js = json.dumps(mod) + "\n"
         print(js)
         print(">>> Sending", js)
-        js = js.encode('utf-8') + "\n"
+        js = js.encode('utf-8')
         ss.sendall(js)
 
 def complete():
