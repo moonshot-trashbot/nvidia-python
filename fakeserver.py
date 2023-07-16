@@ -12,7 +12,7 @@ fakelog = [
             "Right": 850,
             "Top": 123,
             "Bottom": 200,
-            "Center": [0, 0]
+            "Center": [-85, 0]
         })
     ],
     [
@@ -24,20 +24,22 @@ fakelog = [
             "Right": 850,
             "Top": 123,
             "Bottom": 200,
-            "Center": [0, 0]
-        }),
+            "Center": [20, 0]
+        })
+    ],
+    [
         modeling.CustomizedTestingInput({
-            "TrackID": 2,
-            "Confidence": 0.65,
+            "TrackID": 1,
+            "Confidence": 0.75,
             "ClassID": 1,
-            "Left": 360,
-            "Right": 890,
-            "Top": 193,
-            "Bottom": 210,
-            "Center": [0, 0]
+            "Left": 394,
+            "Right": 850,
+            "Top": 123,
+            "Bottom": 200,
+            "Center": [45, 0]
         })
     ]
 ]
 for detections in fakelog:
     runtime.go(detections)
-    time.sleep(1)
+    time.sleep(3)

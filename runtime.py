@@ -23,10 +23,10 @@ def go(detections):
     frame = int(time.time())
     for x in detections:
         mod = modify(x, frame)
-        js = mod.toJSON() + "\n"
+        js = mod.toJSON()
         print(js)
         print(">>> Sending", js)
-        js = js.encode('utf-8')
+        js = js.encode('utf-8') + "\\n".encode('utf-8')
         ss.sendall(js)
 
 def complete():
