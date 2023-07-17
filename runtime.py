@@ -31,13 +31,9 @@ def go(detections):
         print(js)
         print(">>> Sending", js)
         js = js.encode('utf-8') + b"\n"
-        try:
-            ss.sendall(js)
-        finally:
-            ss.detach()
-            socklist.remove(ss)
+        ss.sendall(js)
+    ss.shutdown(socket.SHUT_WR)
+    ss.close()
 
 def complete():
     global socklist
-    for x in socklist:
-        x.close()
