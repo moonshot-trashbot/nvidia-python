@@ -23,7 +23,8 @@ def go(detections):
     frame = int(time.time())
     ss = socket.socket()
     socklist.append(ss)
-    ss.connect(("127.0.0.1", 420))
+    ss.connect(("192.168.12.238", 420))
+    # ss.connect(("127.0.0.1", 420))
     for x in detections:
         mod = modify(x, frame)
         js = mod.toJSON()
