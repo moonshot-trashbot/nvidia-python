@@ -19,21 +19,25 @@ def modify(x, frame):
 socklist = []
 
 def go(detections):
+    if(detections.__len__() == 0): return
     global socklist
     frame = int(time.time())
     ss = socket.socket()
     socklist.append(ss)
     ss.connect(("192.168.12.238", 420))
     # ss.connect(("127.0.0.1", 420))
+    build = ["["]
     for x in detections:
         mod = modify(x, frame)
         js = mod.toJSON()
-        print(js)
-        print(">>> Sending", js)
-        js = js.encode('utf-8') + b"\n"
-        ss.sendall(js)
-    ss.shutdown(socket.SHUT_WR)
-    ss.close()
+        build.append(js + ",")
+    build.append("]")
+    compile = "".join(build).replace(",]", "]")
+    print(">>> Sending", compile)
+    try:
+        ss.sendall(compile.encode('utf-8'))
+    finally:
+        ss.close()
 
 def complete():
-    global socklist
+    pass

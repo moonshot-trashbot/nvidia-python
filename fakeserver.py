@@ -25,6 +25,16 @@ fakelog = [
             "Top": 123,
             "Bottom": 200,
             "Center": [20, 0]
+        }),
+        modeling.CustomizedTestingInput({
+            "TrackID": 2,
+            "Confidence": 0.75,
+            "ClassID": 1,
+            "Left": 394,
+            "Right": 850,
+            "Top": 123,
+            "Bottom": 200,
+            "Center": [50, 0]
         })
     ],
     [
@@ -36,7 +46,21 @@ fakelog = [
             "Right": 850,
             "Top": 123,
             "Bottom": 200,
-            "Center": [45, 0]
+            "Center": [250, 0]
+        })
+    ],
+    [],
+    [],
+    [
+        modeling.CustomizedTestingInput({
+            "TrackID": 1,
+            "Confidence": 0.75,
+            "ClassID": 1,
+            "Left": 394,
+            "Right": 850,
+            "Top": 123,
+            "Bottom": 200,
+            "Center": [250, 0]
         })
     ]
 ]
