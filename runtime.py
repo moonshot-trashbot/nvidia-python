@@ -1,6 +1,5 @@
 import json
 import base64
-import socket
 import modeling
 import time
 import zmq
@@ -18,11 +17,11 @@ def modify(x, frame):
     })
 
 context = zmq.Context()
-socket = context.socket(zmq.REQ)
-socket.connect("tcp://192.168.12.238:420")
+sock = context.socket(zmq.REQ)
+sock.connect("tcp://192.168.12.238:420")
 
 def go(detections):
-    global socket
+    global sock
     if(detections.__len__() == 0): return
     frame = int(time.time())
     build = ["["]
@@ -34,7 +33,7 @@ def go(detections):
     build.append("]")
     compile = "".join(build).replace(",]", "]")
     print(">>> Sending", compile)
-    socket.send(bytes(compile.encode('utf-8')))
+    sock.send(bytes(compile.encode('utf-8')))
 
 def complete():
-    socket.term()
+    sock.term()
