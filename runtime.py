@@ -3,6 +3,7 @@ import base64
 import socket
 import modeling
 import time
+import zmq
 
 def modify(x, frame):
     return modeling.SendableDetection({
@@ -16,7 +17,9 @@ def modify(x, frame):
         "frame": frame
     })
 
-socklist = []
+context = zmq.Context()
+socket = context.socket(zmq.REQ)
+socket.connect("tcp://192.168.12.238:420")
 
 def go(detections):
     if(detections.__len__() == 0): return
@@ -34,10 +37,7 @@ def go(detections):
     build.append("]")
     compile = "".join(build).replace(",]", "]")
     print(">>> Sending", compile)
-    try:
-        ss.sendall(compile.encode('utf-8'))
-    finally:
-        ss.close()
+    socket.send(bytes(compile))
 
 def complete():
-    pass
+    socket.term()
