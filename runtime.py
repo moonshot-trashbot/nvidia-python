@@ -29,11 +29,12 @@ def go(detections):
     for x in detections:
         mod = modify(x, frame)
         js = mod.toJSON()
-        build.append(js + ",")
+        build.append(js)
+        build.append(",")
     build.append("]")
     compile = "".join(build).replace(",]", "]")
     print(">>> Sending", compile)
-    socket.send(bytes(compile))
+    socket.send(bytes(compile.encode('utf-8')))
 
 def complete():
     socket.term()
