@@ -13,6 +13,7 @@ while True:
     img = camera.Capture()
     if img is None: continue
     detections = net.Detect(img)
-    # display.Render(img) 
+#   display.Render(img) 
     runtime.go(detections)
     time.sleep(1)
+
