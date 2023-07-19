@@ -17,7 +17,7 @@ def modify(x, frame):
     })
 
 context = zmq.Context()
-sock = context.socket(zmq.REP)
+sock = context.socket(zmq.REQ)
 sock.connect("tcp://192.168.12.238:420")
 
 def go(detections):
@@ -33,7 +33,7 @@ def go(detections):
     build.append("]")
     compile = "".join(build).replace(",]", "]")
     print(">>> Sending", compile)
-    sock.send(bytes(compile.encode('utf-8')))
+    sock.send(compile.encode("utf-8"))
 
 def complete():
     sock.term()
