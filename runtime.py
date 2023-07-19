@@ -25,9 +25,7 @@ def go(detections):
     if(detections.__len__() == 0): return
     global socklist
     frame = int(time.time())
-    ss = socket.socket()
-    socklist.append(ss)
-    ss.connect(("192.168.12.238", 420))
+    socket.connect(("192.168.12.238", 420))
     # ss.connect(("127.0.0.1", 420))
     build = ["["]
     for x in detections:
