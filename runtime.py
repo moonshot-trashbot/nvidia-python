@@ -17,7 +17,7 @@ def modify(x, frame):
     })
 
 context = zmq.Context()
-sock = context.socket(zmq.REQ)
+sock = context.socket(zmq.REP)
 sock.connect("tcp://192.168.12.238:420")
 
 def go(detections):
