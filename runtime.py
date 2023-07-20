@@ -20,16 +20,20 @@ context = zmq.Context()
 sock = context.socket(zmq.PUSH)
 sock.connect("tcp://192.168.12.238:420")
 
+allow = [1, 2, 18, 19]
+
 def go(detections):
     global sock
+    global allow
     if(detections.__len__() == 0): return
     frame = int(time.time())
     build = ["["]
     for x in detections:
         mod = modify(x, frame)
-        js = mod.toJSON()
-        build.append(js)
-        build.append(",")
+        if(mod.type in allow):
+            js = mod.toJSON()
+            build.append(js)
+            build.append(",")
     build.append("]")
     compile = "".join(build).replace(",]", "]")
     print(">>> Sending", compile)
