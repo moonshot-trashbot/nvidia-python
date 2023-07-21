@@ -5,7 +5,7 @@ import runtime
 
 net = detectNet("ssd-mobilenet-v2", threshold=0.5)
 net.SetTrackingEnabled(True)
-net.SetTrackingParams(minFrames=3, dropFrames=15, overlapThreshold=0.2)
+net.SetTrackingParams(minFrames=1, dropFrames=2, overlapThreshold=0.2)
 camera = videoSource("/dev/video0")
 # display = videoOutput("display://0")
 
@@ -15,5 +15,5 @@ while True:
     detections = net.Detect(img)
 #   display.Render(img) 
     runtime.go(detections)
-    time.sleep(1)
+    time.sleep(0.5)
 
