@@ -15,5 +15,3 @@ while True:
     detections = net.Detect(img)
 #   display.Render(img) 
     runtime.go(detections)
-    time.sleep(0.5)
-
